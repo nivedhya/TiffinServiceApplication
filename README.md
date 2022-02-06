@@ -1,6 +1,6 @@
-# TiffinServiceApplication
+# Tiffin Service Application
 
-## Collaborator
+### Collaborator
 - Adithya
 - Amandeep Singh
 - Hatinder Singh
@@ -8,3 +8,5 @@
 - Nivedhiya Ponnuswamy
 
 
+### Use case diagram
+![Use case diagram](images/use-case.jpeg)
