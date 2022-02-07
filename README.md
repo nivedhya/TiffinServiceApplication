@@ -13,3 +13,4 @@
 
 
 ### Miro Board Screenshot
+![Miro board diagram](images/miro-board-screenshot.png)
