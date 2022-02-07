@@ -10,3 +10,6 @@
 
 ### Use case diagram
 ![Use case diagram](images/use-case.jpeg)
+
+
+### Miro Board Screenshot
