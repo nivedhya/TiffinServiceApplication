@@ -1,7 +1,7 @@
 # Tiffin Service Application
 
 ### Collaborator
-- Adithya
+- Aditya M Naik
 - Amandeep Singh
 - Hatinder Singh
 - Linto Varughese
@@ -20,4 +20,7 @@ In the busy lifestyle, it is a difficult task to cook food at home for Canadians
 
 ### Miro Board Screenshot
 ![Miro board diagram](images/miro-board-screenshot.png)
+
+### Activity Diagram 
+![Activity Diagram](https://github.com/nivedhya/TiffinServiceApplication/blob/006e2e6097ccbade78923f83720265b319cd6c49/images/Tiffin%20Service%20activity-diagram%20(1).jpeg)
 
