@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TiffinServiceApplication">
         <activity
+            android:name=".UserProfile"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
