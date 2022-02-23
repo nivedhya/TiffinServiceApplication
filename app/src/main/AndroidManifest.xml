@@ -28,18 +28,17 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".TabActivity"
             android:exported="false" />
         <activity
             android:name=".LoginPage"
+            android:exported="false" />
+
+        <activity
+            android:name=".SignUpPage"
             android:exported="false" />
     </application>
 
