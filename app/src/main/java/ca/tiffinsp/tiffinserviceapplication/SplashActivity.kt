@@ -16,6 +16,7 @@ class SplashActivity : AppCompatActivity() {
             override fun onFinish() {
                 val intent = Intent(this@SplashActivity, LoginPage::class.java)
                 startActivity(intent)
+                finish()
             }
         }
         timer.start()
