@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:isScrollContainer="true"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:fillViewport="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/terms"
@@ -15,7 +20,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="20dp"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_font_family"
+        android:textFontWeight="400"
         android:text="by continuing you agree to accept our term of service"
         android:textColor="#000000"
         android:textSize="12sp"
@@ -28,8 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_font_family"
         android:text="Hungr"
+        android:textFontWeight="400"
         android:textAlignment="textStart"
         android:textColor="#4CAF50"
         android:textSize="34sp"
@@ -63,7 +70,8 @@
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_font_family"
+        android:textFontWeight="400"
         android:text="Forgot Password?"
         android:textAlignment="textStart"
         android:textColor="#000000"
@@ -78,7 +86,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="10dp"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_font_family"
+        android:textFontWeight="400"
         android:text="Sign In"
         android:textColor="#4CAF50"
         android:textSize="24sp"
@@ -95,7 +104,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="#4CAF50"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_font_family"
+        android:textFontWeight="400"
         android:text="Sign In"
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
@@ -109,7 +119,8 @@
 
     <TextView
         android:id="@+id/signUp"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_font_family"
+        android:textFontWeight="400"
         android:text="Sign Up"
         android:textColor="#4CAF50"
         app:layout_constraintBottom_toBottomOf="@id/button"
@@ -130,7 +141,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_font_family"
+        android:textFontWeight="400"
         android:text="Dont have an account?"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
@@ -197,7 +209,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_font_family"
+        android:textFontWeight="400"
         android:text="Homely Food Daily!"
         android:textAlignment="textStart"
         android:textColor="#000000"
@@ -206,4 +219,6 @@
         app:layout_constraintTop_toBottomOf="@+id/appName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
 
