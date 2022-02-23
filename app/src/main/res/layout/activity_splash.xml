@@ -23,9 +23,10 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="442dp"
-        android:layout_height="595dp"
-        app:layout_constraintBottom_toTopOf="@id/AppName"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintHeight_percent=".75"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
