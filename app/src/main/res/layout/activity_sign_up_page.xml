@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollview1"
+    android:layout_width="409dp"
+    android:layout_height="729dp"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp"
+    android:fillViewport="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".SignUpPage">
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="180dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Log In"
+            android:textColor="#4CAF50"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/account_ques"
+            app:layout_constraintTop_toBottomOf="@+id/Cancel_button" />
+
+        <TextView
+            android:id="@+id/account_ques"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="54dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="180dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Already have An Account?"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Cancel_button" />
+
+        <Button
+            android:id="@+id/Cancel_button"
+            android:layout_width="381dp"
+            android:layout_height="64dp"
+            android:backgroundTint="#4CAF50"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/Submit_button"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Cancel"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:iconTint="#4CAF50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="1101dp" />
+
+        <Button
+            android:id="@+id/Submit_button"
+            android:layout_width="381dp"
+            android:layout_height="64dp"
+
+            android:backgroundTint="#4CAF50"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Submit"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:iconTint="#4CAF50"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/country_edittext"
+            tools:layout_editor_absoluteY="1037dp" />
+
+        <EditText
+            android:id="@+id/country_edittext"
+            android:layout_width="375dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="18dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Country"
+            android:textColor="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/province_edittext" />
+
+        <EditText
+            android:id="@+id/province_edittext"
+            android:layout_width="375dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="18dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Province"
+            android:textColor="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/city_edittext" />
+
+        <EditText
+            android:id="@+id/streetname_edittext"
+            android:layout_width="375dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="17dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Street Name"
+            android:textColor="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/building_edittext" />
+
+        <EditText
+            android:id="@+id/city_edittext"
+            android:layout_width="375dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="City"
+            android:textColor="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/streetname_edittext" />
+
+        <TextView
+            android:id="@+id/Address_details"
+            android:layout_width="364dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="25dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Address Details"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Password_TextPassword"
+            tools:layout_editor_absoluteY="615dp" />
+
+        <ImageButton
+            android:id="@+id/BackButtonimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:layout_marginEnd="355dp"
+            android:backgroundTint="#FFFFFF"
+            android:foregroundTint="#000000"
+
+            app:layout_constraintBottom_toTopOf="@+id/SignUp_textview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/img" />
+
+        <TextView
+            android:id="@+id/SignUp_textview"
+            android:layout_width="366dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="27dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Sign Up"
+            android:textColor="#4CAF50"
+            android:textSize="34sp"
+            app:layout_constraintTop_toBottomOf="@+id/BackButtonimage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="49dp" />
+
+        <TextView
+            android:id="@+id/signup_instructions"
+            android:layout_width="364dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="29dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Please enter your personal details and address"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SignUp_textview" />
+
+        <EditText
+            android:id="@+id/PersonName"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:textColor="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signup_instructions" />
+
+        <EditText
+            android:id="@+id/gender"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="15dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Gender"
+            android:textColor="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/PersonName" />
+
+        <EditText
+            android:id="@+id/dateofbirth"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Date Of Birth"
+            android:textColor="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gender" />
+
+        <EditText
+            android:id="@+id/Mobile_TextPhone"
+            android:layout_width="375dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="18dp"
+            android:ems="10"
+            android:inputType="phone"
+            android:text="Mobile"
+            android:textColor="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateofbirth" />
+
+        <EditText
+            android:id="@+id/Emailid_EmailAddress"
+            android:layout_width="375dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="18dp"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            android:text="Email Address"
+            android:textColor="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Mobile_TextPhone" />
+
+        <EditText
+            android:id="@+id/Password_TextPassword"
+            android:layout_width="375dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="16dp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:text="aaaaaaaa"
+            android:textColor="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Emailid_EmailAddress" />
+
+        <EditText
+            android:id="@+id/building_edittext"
+            android:layout_width="375dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="18dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="App/Building/Unit"
+            android:textColor="#D0D0D0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Address_details" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
