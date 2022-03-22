@@ -45,38 +45,15 @@ class SignUpPage : AppCompatActivity() {
         }
 
 
+//toast....
 
-        fun validate() : Boolean{
-             var isValid =true;
-             name=findViewById<EditText>(R.id.PersonName).text.toString();
-             gender=findViewById<EditText>(R.id.gender).text.toString();
-             dateofbirth=findViewById<EditText>(R.id.dateofbirth).text.toString();
-             contact=findViewById<EditText>(R.id.Mobile_TextPhone).text.toString();
-             email=findViewById<EditText>(R.id.Emailid_EmailAddress).text.toString();
-             password=findViewById<EditText>(R.id.Password_TextPassword).text.toString();
-             building=findViewById<EditText>(R.id.building_edittext).text.toString();
-             streetname=findViewById<EditText>(R.id.streetname_edittext).text.toString();
-             city=findViewById<EditText>(R.id.city_edittext).text.toString();
-             province=findViewById<EditText>(R.id.province_edittext).text.toString();
-             country=findViewById<EditText>(R.id.country_edittext).text.toString();
-
-            if(name.isEmpty()|| gender.isEmpty() || dateofbirth.isEmpty() || contact.isEmpty()||email.isEmpty()||
-                    password.isEmpty()||building.isEmpty()||streetname.isEmpty()||city.isEmpty()||province.isEmpty()||country.isEmpty())
-            {
-                return false;
-            }
-
-            //need to validate email only
-
-
-
-            return isValid;
-        }
         findViewById<Button>(R.id.Submit_button).setOnClickListener{
             var validated : Boolean =validate();
+//            alreadyExist();
             if(validated)
             {
-                auth.createUserWithEmailAndPassword(email, password)
+//                val check =alreadyExist();
+                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             // Sign in success, update UI with the signed-in user's information
@@ -84,12 +61,12 @@ class SignUpPage : AppCompatActivity() {
 
                             // Add a new document with a generated ID
                             db.collection("users")
-                                .add(userObject)
+                                .add(userObject.getData())
                                 .addOnSuccessListener { documentReference ->
                                     Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
 
                                 //renders to home activity
-                                    val intent = Intent(this@SignUpPage, ForgotPasswordActivity::class.java)
+                                    val intent = Intent(this@SignUpPage, TabActivity::class.java)
                                     startActivity(intent)
 
                                 }
@@ -103,7 +80,7 @@ class SignUpPage : AppCompatActivity() {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                            Toast.makeText(baseContext, "Authentication failed.",
+                            Toast.makeText(baseContext, "Authentication failed, User Already exists.",
                                 Toast.LENGTH_SHORT).show()
 //                            updateUI(null)
                         }
@@ -117,4 +94,116 @@ class SignUpPage : AppCompatActivity() {
 
         }
     }
+    fun validate() : Boolean{
+        Log.d(TAG, "in validate function")
+        var isValid =true;
+        name=findViewById<EditText>(R.id.PersonName).text.toString();
+        gender=findViewById<EditText>(R.id.gender).text.toString();
+        dateofbirth=findViewById<EditText>(R.id.dateofbirth).text.toString();
+        contact=findViewById<EditText>(R.id.Mobile_TextPhone).text.toString();
+        email=findViewById<EditText>(R.id.Emailid_EmailAddress).text.toString();
+        password=findViewById<EditText>(R.id.Password_TextPassword).text.toString();
+        building=findViewById<EditText>(R.id.building_edittext).text.toString();
+        streetname=findViewById<EditText>(R.id.streetname_edittext).text.toString();
+        city=findViewById<EditText>(R.id.city_edittext).text.toString();
+        province=findViewById<EditText>(R.id.province_edittext).text.toString();
+        country=findViewById<EditText>(R.id.country_edittext).text.toString();
+
+
+        if(name.isEmpty())
+        {
+
+            findViewById<EditText>(R.id.PersonName).setError("Invalid Input ");
+            isValid=false;
+        }
+        if(gender.isEmpty())
+        {
+
+            findViewById<EditText>(R.id.gender).setError("Invalid Input ");
+            isValid=false;
+        }
+        val pattern = Regex("([0-9]\\/)");
+        if(dateofbirth.isEmpty() || pattern.containsMatchIn(dateofbirth)==false)
+        {
+
+            findViewById<EditText>(R.id.dateofbirth).setError("Invalid Input ");
+            isValid=false;
+        }
+        val pat2 =Regex("([0-9])");
+        if(contact.isEmpty() || pat2.containsMatchIn(contact)==false)
+        {
+
+            findViewById<EditText>(R.id.Mobile_TextPhone).setError("Invalid Input ");
+            isValid=false;
+        }
+        val pat3 = Regex(".com$")
+        if(email.isEmpty() || pat3.containsMatchIn(email)==false)
+        {
+
+            findViewById<EditText>(R.id.Emailid_EmailAddress).setError("Invalid Input ");
+            isValid=false;
+        }
+        if(password.isEmpty())
+        {
+
+            findViewById<EditText>(R.id.Password_TextPassword).setError("Invalid Input ");
+            isValid=false;
+        }
+        if(building.isEmpty())
+        {
+
+            findViewById<EditText>(R.id.building_edittext).setError("Invalid Input ");
+            isValid=false;
+        }
+        if(streetname.isEmpty())
+        {
+
+            findViewById<EditText>(R.id.streetname_edittext).setError("Invalid Input ");
+            isValid=false;
+        }
+        if(city.isEmpty())
+        {
+
+            findViewById<EditText>(R.id.city_edittext).setError("Invalid Input ");
+            isValid=false;
+        }
+        if(province.isEmpty())
+        {
+
+            findViewById<EditText>(R.id.province_edittext).setError("Invalid Input ");
+            isValid=false;
+        }
+        if(country.isEmpty())
+        {
+
+            findViewById<EditText>(R.id.country_edittext).setError("Invalid Input ");
+            isValid=false;
+        }
+
+        return isValid;
+    }
+//    fun alreadyExist(): Boolean{
+//        Log.d(TAG, "in alreadyexisted function")
+//        db.collection("users")
+//            .get()
+//            .addOnSuccessListener { result ->
+//                for (document in result) {
+//                    Log.d(TAG, "${document.id} => ${document.data}")
+//                    if(document.id== "email" )
+//                    {
+//
+//
+//                        Toast.makeText(baseContext, "User Already Exists, Please Login",
+//                                Toast.LENGTH_SHORT).show();
+//
+//                    }
+//                }
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.w(TAG, "Error getting documents.", exception)
+//            }
+//        Toast.makeText(baseContext, "True",
+//            Toast.LENGTH_SHORT).show();
+//        return true;
+//    }
 }
