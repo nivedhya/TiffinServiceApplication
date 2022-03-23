@@ -105,8 +105,8 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="#4CAF50"
         android:fontFamily="@font/poppins_font_family"
-        android:textFontWeight="400"
         android:text="Sign In"
+        android:textFontWeight="400"
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
@@ -152,7 +152,7 @@
         app:layout_constraintTop_toTopOf="@id/terms"
         app:layout_constraintVertical_bias="0.546" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <EditText
         android:id="@+id/emailField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -164,20 +164,18 @@
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopEnd="16dp"
+        android:inputType="textEmailAddress"
+        android:hint="Email"
         app:boxCornerRadiusTopStart="16dp"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:layout_constraintBottom_toTopOf="@id/signIn"
-        app:layout_constraintTop_toTopOf="@id/password">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:hint="Enter your name"
-            android:maxLength="20" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toTopOf="@id/password"/>
 
 
-    <com.google.android.material.textfield.TextInputLayout
+
+
+    <EditText
         android:id="@+id/password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
@@ -187,20 +185,15 @@
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
+        android:inputType="textPassword"
+        android:hint="Password"
         app:boxCornerRadiusTopEnd="16dp"
         app:boxCornerRadiusTopStart="16dp"
         app:counterEnabled="true"
         app:counterMaxLength="20"
         app:layout_constraintTop_toBottomOf="@id/emailField"
-        app:layout_constraintBottom_toTopOf="@id/forgotPassword">
+        app:layout_constraintBottom_toTopOf="@id/forgotPassword"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter password"
-
-            />
-    </com.google.android.material.textfield.TextInputLayout>
 
 
     <TextView
