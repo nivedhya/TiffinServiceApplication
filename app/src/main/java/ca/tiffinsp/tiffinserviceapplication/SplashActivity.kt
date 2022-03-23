@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import ca.tiffinsp.tiffinserviceapplication.utils.PreferenceHelper
 
 class SplashActivity : AppCompatActivity() {
 
@@ -14,9 +15,20 @@ class SplashActivity : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {}
 
             override fun onFinish() {
-                val intent = Intent(this@SplashActivity, LoginPage::class.java)
-                startActivity(intent)
-                finish()
+
+                val userJson = PreferenceHelper().getPref(applicationContext).getString(
+                    PreferenceHelper.USER_PREF, null)
+                if(userJson.isNullOrEmpty()){
+                    val intent = Intent(this@SplashActivity, LoginPage::class.java)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    val intent = Intent(this@SplashActivity, TabActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+
+
             }
         }
         timer.start()

@@ -7,4 +7,6 @@
 
     
     <color name="nav_inactive">#777777</color>
+
+    <color name="edit_text_color">#101010</color>
 </resources>
