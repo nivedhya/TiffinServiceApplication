@@ -4,14 +4,15 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.widget.*
-import ca.tiffinsp.tiffinserviceapplication.authentication.ForgotPasswordActivity
+import androidx.core.content.edit
+import ca.tiffinsp.tiffinserviceapplication.utils.PreferenceHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 
 class SignUpPage : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -61,13 +62,29 @@ class SignUpPage : AppCompatActivity() {
 
                             // Add a new document with a generated ID
                             db.collection("users")
-                                .add(userObject.getData())
+                                .document(auth.currentUser!!.uid)
+                                .set(userObject.toMap())
                                 .addOnSuccessListener { documentReference ->
-                                    Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                                    Log.d(TAG, "DocumentSnapshot added with ID: ${auth.currentUser!!.uid}")
+                                    val uid = auth.currentUser!!.uid
+                                    db.collection(FirestoreCollections.USERS).document(uid).get().addOnCompleteListener {
+                                        if(it.isSuccessful && it.result != null){
+                                            val gson = Gson()
+                                            val pref = PreferenceHelper().getPref(context = applicationContext)
+                                            val userJson  = gson.toJson(it.result!!.data)
+                                            pref.edit {
+                                                putString(PreferenceHelper.USER_PREF, userJson)
+                                            }
+                                            Toast.makeText(baseContext, "Sign in successful",
+                                                Toast.LENGTH_SHORT).show()
+                                            //renders to home activity
+                                            val intent = Intent(this@SignUpPage, TabActivity::class.java)
+                                            startActivity(intent)
+                                            finish()
+                                        }
+                                    }
 
-                                //renders to home activity
-                                    val intent = Intent(this@SignUpPage, TabActivity::class.java)
-                                    startActivity(intent)
+
 
                                 }
                                 .addOnFailureListener { e ->

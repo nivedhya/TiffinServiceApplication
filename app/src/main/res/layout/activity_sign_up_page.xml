@@ -100,7 +100,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Country"
-            android:textColor="#D0D0D0"
+            android:textColor="@color/edit_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/province_edittext" />
@@ -114,7 +114,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Province"
-            android:textColor="#D0D0D0"
+            android:textColor="@color/edit_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/city_edittext" />
@@ -128,7 +128,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Street Name"
-            android:textColor="#D0D0D0"
+            android:textColor="@color/edit_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/building_edittext" />
@@ -142,7 +142,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="City"
-            android:textColor="#D0D0D0"
+            android:textColor="@color/edit_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/streetname_edittext" />
@@ -221,7 +221,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Name"
-            android:textColor="#D0D0D0"
+            android:textColor="@color/edit_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -238,7 +238,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Gender"
-            android:textColor="#D0D0D0"
+            android:textColor="@color/edit_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -254,7 +254,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="Date Of Birth(YYYY/MM/DD)"
-            android:textColor="#D0D0D0"
+            android:textColor="@color/edit_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -269,7 +269,7 @@
             android:ems="10"
             android:inputType="phone"
             android:hint="Mobile"
-            android:textColor="#D0D0D0"
+            android:textColor="@color/edit_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dateofbirth" />
@@ -283,7 +283,7 @@
             android:ems="10"
             android:inputType="textEmailAddress"
             android:hint="Email Address"
-            android:textColor="#D0D0D0"
+            android:textColor="@color/edit_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Mobile_TextPhone" />
@@ -297,7 +297,7 @@
             android:ems="10"
             android:inputType="textPassword"
             android:hint="password"
-            android:textColor="#D0D0D0"
+            android:textColor="@color/edit_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Emailid_EmailAddress" />
@@ -311,7 +311,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:hint="App/Building/Unit"
-            android:textColor="#D0D0D0"
+            android:textColor="@color/edit_text_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Address_details" />

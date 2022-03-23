@@ -6,7 +6,7 @@ class User(var name:String,var gender:String,var dateofbirth:String,var contact:
 ,var building:String, var streetname:String,var city:String,var province:String,var country:String) {
 
 
-    fun getData(): HashMap<String,Any>{
+    fun toMap(): HashMap<String,Any>{
         return hashMapOf("name" to name,
         "gender" to gender,
         "dateofbirth" to dateofbirth,

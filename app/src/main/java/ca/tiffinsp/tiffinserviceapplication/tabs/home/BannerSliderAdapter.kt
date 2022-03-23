@@ -1,5 +1,6 @@
 package ca.tiffinsp.tiffinserviceapplication.tabs.home
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,12 @@ class BannerSliderAdapter(
     var images: Array<String>
 ) : RecyclerView.Adapter<BannerSliderAdapter.BannerHolder>() {
     private var mLayoutInflater: LayoutInflater? = null
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addNewData(images: Array<String>){
+        this.images = images
+        notifyDataSetChanged()
+    }
 
     init {
         mLayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
