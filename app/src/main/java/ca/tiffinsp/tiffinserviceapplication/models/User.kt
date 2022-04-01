@@ -1,6 +1,4 @@
-package ca.tiffinsp.tiffinserviceapplication
-
-import android.widget.EditText
+package ca.tiffinsp.tiffinserviceapplication.models
 
 class User(var name:String,var gender:String,var dateofbirth:String,var contact:String, var email:String,var password:String
 ,var building:String, var streetname:String,var city:String,var province:String,var country:String) {

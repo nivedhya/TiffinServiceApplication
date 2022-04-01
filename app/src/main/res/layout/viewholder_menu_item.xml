@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".TabActivity"
+    app:cardCornerRadius="10dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="5dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/iv_tiffin"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:scaleType="center"
+            tools:src="@tools:sample/backgrounds/scenic"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Veg Thali Package"
+            android:id="@+id/tv_package_name"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_font_family"
+            android:textFontWeight="600"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_tiffin"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="2 Roti, Rice bowl and Curry"
+            android:layout_marginEnd="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_font_family"
+            android:textFontWeight="400"
+            android:id="@+id/tv_tiffin_items"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_package_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_package_name"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mon-Fri"
+            android:textSize="13sp"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/ic_room_service"
+            android:fontFamily="@font/poppins_font_family"
+            android:textFontWeight="300"
+            android:textColor="@color/black"
+            android:id="@+id/tv_days"
+            app:layout_constraintTop_toBottomOf="@id/tv_tiffin_items"
+            app:layout_constraintStart_toStartOf="@id/tv_package_name"
+            />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delivery"
+            android:drawableStart="@drawable/ic_delivery_dining"
+            android:drawablePadding="5dp"
+            android:layout_marginEnd="10dp"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_font_family"
+            android:textFontWeight="300"
+            android:textColor="@color/black"
+            android:id="@+id/tv_tiffin_delivery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_days"
+            app:layout_constraintBottom_toBottomOf="@id/tv_days"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$15"
+            android:id="@+id/tv_price"
+            android:textSize="18sp"
+            android:fontFamily="@font/poppins_font_family"
+            android:textFontWeight="600"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@id/tv_package_name"
+            app:layout_constraintTop_toTopOf="@id/btn_add"
+            app:layout_constraintBottom_toBottomOf="@id/btn_add"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/Month"
+            android:id="@+id/tv_duration"
+            android:textSize="12sp"
+            android:fontFamily="@font/poppins_font_family"
+            android:textFontWeight="300"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/tv_price"
+            app:layout_constraintTop_toTopOf="@id/btn_add"
+            app:layout_constraintBottom_toBottomOf="@id/btn_add"
+            />
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+ Add"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/btn_add"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/primary"
+            app:layout_constraintTop_toBottomOf="@id/tv_days"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
