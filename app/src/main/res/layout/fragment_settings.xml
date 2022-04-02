@@ -6,10 +6,61 @@
     tools:context=".tabs.SettingsFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Settings Page"
-        android:gravity="center"/>
+        android:orientation="vertical"
+        android:layout_marginLeft="10sp">
+
+<!--        android:layout_padding="10sp"-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+<!--            android:layout_padding="100sp"-->
+
+            <ImageView
+                android:id="@+id/backbutton"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:src="@drawable/ic_arrow_back"
+                android:layout_margin="5sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                android:textSize="22sp"
+                android:layout_margin="5sp"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/resetpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reset Password"
+            android:layout_margin="5sp"
+            android:textSize="16sp"
+            />
+        <TextView
+            android:id="@+id/deleteaccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Acount"
+            android:layout_margin="5sp"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:layout_margin="5sp"
+            android:textSize="16sp"
+            />
+    </LinearLayout>
 
 </FrameLayout>
