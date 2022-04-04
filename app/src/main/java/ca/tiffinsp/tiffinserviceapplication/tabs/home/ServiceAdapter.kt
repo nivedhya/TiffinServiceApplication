@@ -7,37 +7,55 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import ca.tiffinsp.tiffinserviceapplication.R
+import ca.tiffinsp.tiffinserviceapplication.databinding.ViewholderHomePageBinding
+import ca.tiffinsp.tiffinserviceapplication.databinding.ViewholderMenuItemBinding
+import ca.tiffinsp.tiffinserviceapplication.models.Subscription
 import com.bumptech.glide.Glide
 
 
 class ServiceAdapter(
     var context: Context,
-    var images: Array<String>
+    var subscriptions: ArrayList<Subscription>
 ) : RecyclerView.Adapter<ServiceAdapter.ServiceHolder>() {
-    private var mLayoutInflater: LayoutInflater? = null
 
-    init {
-        mLayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    fun addNewData(subscriptions: ArrayList<Subscription>){
+        this.subscriptions.clear()
+        this.subscriptions.addAll(subscriptions)
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceHolder {
-        val view: View = LayoutInflater.from(context).inflate(R.layout.viewholder_home_page, parent, false)
-        return ServiceHolder(view)
+        val binding = ViewholderHomePageBinding.inflate(LayoutInflater.from(context), parent, false)
+        return ServiceHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ServiceHolder, position: Int) {
-        Glide.with(context).load(images[position]).centerCrop()
-//            .placeholder(R.drawable.loading_spinner)
-            .into(holder.imageView);
+        holder.bind(subscriptions[position])
     }
 
     override fun getItemCount(): Int {
-        return images.size
+        return subscriptions.size
     }
 
 
-    class ServiceHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imageView: ImageView = itemView.findViewById(R.id.iv_tiffin)
+    class ServiceHolder(val binding: ViewholderHomePageBinding) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(subscription: Subscription){
+            binding.apply {
+                tvTiffinName.text = subscription.restaurantName
+                if(subscription.menus[0].isVeg){
+                    tvTiffinVeg.text = "Veg"
+                }else{
+                    tvTiffinVeg.text = "Non-Veg"
+                }
+                tvTiffinDelivery.text = subscription.menus[0].days
+
+
+                Glide.with(binding.root.context).load(subscription.restaurantImage).centerCrop()
+                    .into(ivTiffin)
+            }
+
+        }
 
     }
 }

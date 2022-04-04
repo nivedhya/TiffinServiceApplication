@@ -5,5 +5,6 @@ class FirestoreCollections {
         const val USERS = "users"
         const val BANNERS = "banners"
         const val RESTAURANTS = "restaurants"
+        const val SUBSCRIPTIONS = "subscriptions"
     }
 }

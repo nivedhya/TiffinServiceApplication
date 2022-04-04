@@ -13,12 +13,12 @@ import com.bumptech.glide.Glide
 
 class BannerSliderAdapter(
     var context: Context,
-    var images: Array<String>
+    var images: ArrayList<String>
 ) : RecyclerView.Adapter<BannerSliderAdapter.BannerHolder>() {
     private var mLayoutInflater: LayoutInflater? = null
 
     @SuppressLint("NotifyDataSetChanged")
-    fun addNewData(images: Array<String>){
+    fun addNewData(images: ArrayList<String>){
         this.images = images
         notifyDataSetChanged()
     }

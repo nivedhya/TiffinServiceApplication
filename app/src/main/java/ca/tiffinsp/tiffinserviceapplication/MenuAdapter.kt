@@ -15,6 +15,7 @@ class MenuAdapter(
     var menus: ArrayList<RestaurantMenu>,
     var callback: OnMenuCallback
 ) : RecyclerView.Adapter<MenuAdapter.MenuHolder>() {
+    val selectedMenuPositions = arrayListOf<Int>()
 
     fun setNewItems(menus: List<RestaurantMenu>){
         this.menus.clear()
@@ -30,6 +31,13 @@ class MenuAdapter(
 
     override fun onBindViewHolder(holder: MenuHolder, position: Int) {
         holder.bind(menus[position])
+        if(selectedMenuPositions.contains(position)){
+            holder.binding.btnAdd.text = "Remove"
+            holder.binding.btnAdd.backgroundTintList = holder.binding.root.context.getColorStateList(R.color.nav_inactive)
+        }else{
+            holder.binding.btnAdd.text = "+ Add"
+            holder.binding.btnAdd.backgroundTintList = holder.binding.root.context.getColorStateList(R.color.primary)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -37,7 +45,7 @@ class MenuAdapter(
     }
 
 
-    open class MenuHolder(private val binding: ViewholderMenuItemBinding, callback: OnMenuCallback) : RecyclerView.ViewHolder(binding.root) {
+    open class MenuHolder(val binding: ViewholderMenuItemBinding, callback: OnMenuCallback) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.btnAdd.setOnClickListener {
                 if(adapterPosition != -1){
@@ -47,17 +55,16 @@ class MenuAdapter(
         }
 
         fun bind(menu: RestaurantMenu){
-
             binding.apply {
                 Glide.with(itemView.context).load(menu.image).centerCrop()
                     .into(ivTiffin)
                 tvPackageName.text = menu.name
                 tvTiffinItems.text = menu.items
                 tvDays.text = menu.days
-                if(menu.deliveryAvailable){
-                    tvTiffinDelivery.visibility  = View.VISIBLE
+                if(menu.isVeg){
+                    tvTiffinDelivery.text = "Veg"
                 }else{
-                    tvTiffinDelivery.visibility  = View.GONE
+                    tvTiffinDelivery.text = "Non-Veg"
                 }
                 tvPrice.text = "$${menu.price}"
             }
