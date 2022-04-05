@@ -5,12 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".tabs.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginLeft="10sp">
+        android:orientation="vertical">
 
 <!--        android:layout_padding="10sp"-->
 
@@ -19,47 +17,67 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 <!--            android:layout_padding="100sp"-->
-
-            <ImageView
-                android:id="@+id/backbutton"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
-                android:src="@drawable/ic_arrow_back"
-                android:layout_margin="5sp"
-                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Settings"
                 android:textSize="22sp"
-                android:layout_margin="5sp"
+                android:padding="16dp"
                 />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/resetpassword"
+            android:id="@+id/tv_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Reset Password"
-            android:layout_margin="5sp"
+            android:text="Profile"
             android:textSize="16sp"
+            android:padding="16dp"
             />
-        <TextView
-            android:id="@+id/deleteaccount"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delete Acount"
-            android:layout_margin="5sp"
-            android:textSize="16sp"
+            android:layout_height="1dp"
+            android:background="@color/divider_color"
             />
 
         <TextView
-            android:id="@+id/logout"
+            android:id="@+id/tv_privacy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Privacy policy"
+            android:textSize="16sp"
+            android:padding="16dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color"
+            />
+        <TextView
+            android:id="@+id/tv_terms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Terms and conditions"
+            android:textSize="16sp"
+            android:padding="16dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color"
+            />
+        <TextView
+            android:id="@+id/tv_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Logout"
-            android:layout_margin="5sp"
+            android:padding="16dp"
             android:textSize="16sp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color"
             />
     </LinearLayout>
 

@@ -29,6 +29,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tiffin Hut"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_font_family"
+            android:textFontWeight="400"
             android:id="@+id/tv_tiffin_name"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
@@ -36,24 +40,29 @@
             app:layout_constraintTop_toBottomOf="@id/iv_tiffin"/>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4.4"
-            android:layout_marginEnd="10dp"
-            android:id="@+id/tv_tiffin_rating"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_tiffin_name"
-            app:layout_constraintBottom_toBottomOf="@id/tv_tiffin_name"
-            />
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="4.4"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:id="@+id/tv_tiffin_rating"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@id/tv_tiffin_name"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/tv_tiffin_name"-->
+<!--            />-->
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Delivery"
-            android:layout_marginStart="10dp"
+            android:text="Mon"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_font_family"
+            android:textFontWeight="400"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/ic_delivery_dining"
             android:id="@+id/tv_tiffin_delivery"
+            android:layout_marginStart="10dp"
             app:layout_constraintTop_toBottomOf="@id/tv_tiffin_name"
             app:layout_constraintStart_toStartOf="parent"
             />
@@ -64,6 +73,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Veg"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_font_family"
+            android:textFontWeight="400"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/ic_room_service"
             android:layout_marginEnd="10dp"
             android:id="@+id/tv_tiffin_veg"
             app:layout_constraintEnd_toEndOf="parent"

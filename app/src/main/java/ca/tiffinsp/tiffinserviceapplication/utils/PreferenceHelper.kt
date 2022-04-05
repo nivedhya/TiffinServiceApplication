@@ -14,10 +14,10 @@ class PreferenceHelper {
         return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
     }
 
-    fun getUser(preferences: SharedPreferences){
-        val userJson = preferences.getString(USER_PREF, "{}")
-
-
+    fun deletePref(context: Context){
+        context.deleteSharedPreferences(PREF_NAME)
     }
+
+
 
 }

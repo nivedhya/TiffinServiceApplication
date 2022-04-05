@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.content.edit
+import ca.tiffinsp.tiffinserviceapplication.models.User
 import ca.tiffinsp.tiffinserviceapplication.utils.PreferenceHelper
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
