@@ -1,5 +1,6 @@
 package ca.tiffinsp.tiffinserviceapplication.ordersummary
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,6 +9,7 @@ import ca.tiffinsp.tiffinserviceapplication.databinding.ActivityOrderSummaryBind
 import ca.tiffinsp.tiffinserviceapplication.models.Restaurant
 import ca.tiffinsp.tiffinserviceapplication.models.SelectedMenu
 import ca.tiffinsp.tiffinserviceapplication.models.Subscription
+import ca.tiffinsp.tiffinserviceapplication.payment.PaymentActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -64,13 +66,10 @@ class OrderSummaryActivity : AppCompatActivity() {
                     uid = Firebase.auth.currentUser!!.uid,
                     createdDate = null
                 )
-                db.collection("subscriptions")
-                    .document()
-                    .set(subscription.toMap())
-                    .addOnSuccessListener { _ ->
-                        Toast.makeText(this, "Successfully subscribed", Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
+
+                val intent = Intent(this, PaymentActivity::class.java)
+                intent.putExtra(PaymentActivity.SUBSCRIPTION_DETAILS, subscription)
+                startActivity(intent)
             }
         }
     }

@@ -89,18 +89,19 @@ override fun onCreateView(
                         val images = arrayListOf<String>()
                         bannerSnapshot.result!!.forEach { snapshot ->
                             val url = snapshot.getString("url")
-                            println(snapshot)
                             if(url != null){
                                 images.add(url)
                             }
                         }
 
                         binding.apply {
-                            vp.adapter = BannerSliderAdapter(
-                                requireContext(),
-                                images
-                            )
-                            dotsIndicator.setViewPager2(vp)
+                            if(context != null){
+                                vp.adapter = BannerSliderAdapter(
+                                    requireContext(),
+                                    images
+                                )
+                                dotsIndicator.setViewPager2(vp)
+                            }
                         }
                     }
                 }
@@ -115,9 +116,11 @@ override fun onCreateView(
     }
 
     private fun setUser(view: View){
-        val userJson = PreferenceHelper().getPref(requireContext()).getString(PreferenceHelper.USER_PREF, "{}");
-        val user = Gson().fromJson(userJson, User::class.java)
-        view.findViewById<TextView>(R.id.tv_name).text = user.name
+        if(context != null){
+            val userJson = PreferenceHelper().getPref(requireContext()).getString(PreferenceHelper.USER_PREF, "{}");
+            val user = Gson().fromJson(userJson, User::class.java)
+            view.findViewById<TextView>(R.id.tv_name).text = user.name
+        }
     }
 
     companion object {
