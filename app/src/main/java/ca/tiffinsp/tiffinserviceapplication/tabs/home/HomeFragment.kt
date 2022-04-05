@@ -7,36 +7,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import ca.tiffinsp.tiffinserviceapplication.FirestoreCollections
 import ca.tiffinsp.tiffinserviceapplication.R
-import ca.tiffinsp.tiffinserviceapplication.RestaurantActivity
 import ca.tiffinsp.tiffinserviceapplication.UserProfile
 import ca.tiffinsp.tiffinserviceapplication.databinding.FragmentHomeBinding
-import ca.tiffinsp.tiffinserviceapplication.models.Restaurant
 import ca.tiffinsp.tiffinserviceapplication.models.Subscription
 import ca.tiffinsp.tiffinserviceapplication.models.User
-import ca.tiffinsp.tiffinserviceapplication.tabs.home.BannerSliderAdapter
-import ca.tiffinsp.tiffinserviceapplication.tabs.home.ServiceAdapter
+import ca.tiffinsp.tiffinserviceapplication.utils.DialogProgress
 import ca.tiffinsp.tiffinserviceapplication.utils.PreferenceHelper
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
-import com.tbuonomo.viewpagerdotsindicator.DotsIndicator
 import de.hdodenhof.circleimageview.CircleImageView
 
 class HomeFragment : Fragment() {
     lateinit var contentView: View
-    private val db = Firebase.firestore;
+    private val db = Firebase.firestore
     lateinit var binding: FragmentHomeBinding
     lateinit var adapter: ServiceAdapter
+    lateinit var progressDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,16 +61,10 @@ override fun onCreateView(
         super.onViewCreated(view, savedInstanceState)
         adapter = ServiceAdapter(requireContext(), arrayListOf())
         setUser(view)
-        getData()
 
         view.findViewById<CircleImageView>(R.id.civ_profile).setOnClickListener {
-//            val intent = Intent(requireContext(), UserProfile::class.java)
-//            startForResult.launch(intent)
-
-            val intent = Intent(requireContext(), RestaurantActivity::class.java)
-            intent.putExtra(RestaurantActivity.RESTAURANT_DOC_ID, "r5ar1SO6pM1q3IJxxXE8")
+            val intent = Intent(requireContext(), UserProfile::class.java)
             startForResult.launch(intent)
-
         }
 
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_services)
@@ -83,6 +73,7 @@ override fun onCreateView(
     }
 
     private fun getData() {
+        progressDialog = DialogProgress.build(requireContext())
         db.collection(FirestoreCollections.SUBSCRIPTIONS).whereEqualTo("uid", Firebase.auth.currentUser!!.uid).whereEqualTo("active", true).get().addOnCompleteListener {subscriptionSnapShots ->
             if (subscriptionSnapShots.isSuccessful && subscriptionSnapShots.result != null) {
                 val gson = Gson()
@@ -114,9 +105,14 @@ override fun onCreateView(
                     }
                 }
             }
+            progressDialog.hide()
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        getData()
+    }
 
     private fun setUser(view: View){
         val userJson = PreferenceHelper().getPref(requireContext()).getString(PreferenceHelper.USER_PREF, "{}");

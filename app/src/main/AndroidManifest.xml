@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ca.tiffinsp.tiffinserviceapplication">
+    package="ca.tiffinsp.tiffinserviceapplication" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -9,13 +9,19 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TiffinServiceApplication">
+        android:theme="@style/Theme.TiffinServiceApplication" >
         <activity
-            android:name=".RestaurantActivity"
+            android:name=".ordersummary.OrderSummaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".search.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".restaurant.RestaurantActivity"
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".TabActivity"
             android:exported="false" />

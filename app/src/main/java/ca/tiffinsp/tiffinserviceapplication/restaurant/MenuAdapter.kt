@@ -1,11 +1,10 @@
-package ca.tiffinsp.tiffinserviceapplication
+package ca.tiffinsp.tiffinserviceapplication.restaurant
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import ca.tiffinsp.tiffinserviceapplication.R
 import ca.tiffinsp.tiffinserviceapplication.databinding.ViewholderMenuItemBinding
 import ca.tiffinsp.tiffinserviceapplication.models.RestaurantMenu
 import com.bumptech.glide.Glide
@@ -33,10 +32,14 @@ class MenuAdapter(
         holder.bind(menus[position])
         if(selectedMenuPositions.contains(position)){
             holder.binding.btnAdd.text = "Remove"
-            holder.binding.btnAdd.backgroundTintList = holder.binding.root.context.getColorStateList(R.color.nav_inactive)
+            holder.binding.btnAdd.backgroundTintList = holder.binding.root.context.getColorStateList(
+                R.color.nav_inactive
+            )
         }else{
             holder.binding.btnAdd.text = "+ Add"
-            holder.binding.btnAdd.backgroundTintList = holder.binding.root.context.getColorStateList(R.color.primary)
+            holder.binding.btnAdd.backgroundTintList = holder.binding.root.context.getColorStateList(
+                R.color.primary
+            )
         }
     }
 

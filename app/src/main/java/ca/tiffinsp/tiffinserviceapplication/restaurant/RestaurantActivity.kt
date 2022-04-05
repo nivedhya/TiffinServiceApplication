@@ -1,19 +1,19 @@
-package ca.tiffinsp.tiffinserviceapplication
+package ca.tiffinsp.tiffinserviceapplication.restaurant
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import ca.tiffinsp.tiffinserviceapplication.FirestoreCollections
 import ca.tiffinsp.tiffinserviceapplication.databinding.ActivityRestaurantBinding
 import ca.tiffinsp.tiffinserviceapplication.models.Restaurant
 import ca.tiffinsp.tiffinserviceapplication.models.RestaurantMenu
+import ca.tiffinsp.tiffinserviceapplication.models.SelectedMenu
 import ca.tiffinsp.tiffinserviceapplication.models.Subscription
-import ca.tiffinsp.tiffinserviceapplication.models.User
+import ca.tiffinsp.tiffinserviceapplication.ordersummary.OrderSummaryActivity
 import ca.tiffinsp.tiffinserviceapplication.tabs.home.BannerSliderAdapter
-import ca.tiffinsp.tiffinserviceapplication.tabs.home.ServiceAdapter
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -34,7 +34,7 @@ class RestaurantActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        adapter = MenuAdapter(this, arrayListOf(), object: MenuAdapter.OnMenuCallback{
+        adapter = MenuAdapter(this, arrayListOf(), object: MenuAdapter.OnMenuCallback {
             override fun onMenuClick(pos: Int) {
                 if(adapter.selectedMenuPositions.contains(pos)){
                     adapter.selectedMenuPositions.remove(pos)
@@ -61,30 +61,7 @@ class RestaurantActivity : AppCompatActivity() {
         if(restaurantId != null){
             getData(restaurantId!!)
         }
-        binding.btnProceed.setOnClickListener {
-            if(adapter.selectedMenuPositions.isNotEmpty()){
-                val arrayList = arrayListOf<RestaurantMenu>()
-                adapter.selectedMenuPositions.forEach {
-                    arrayList.add(restaurant!!.menu[it])
-                }
 
-                val subscription = Subscription(
-                    restaurantId = restaurantId!!,
-                    restaurantName = restaurant!!.name,
-                    restaurantImage = restaurant!!.images[0],
-                    menus = arrayList,
-                    uid = Firebase.auth.currentUser!!.uid,
-                    createdDate = null
-                )
-                db.collection("subscriptions")
-                    .document()
-                    .set(subscription.toMap())
-                    .addOnSuccessListener { documentReference ->
-                        Toast.makeText(this, "Successfully purchased subscription", Toast.LENGTH_SHORT).show()
-                    }
-
-            }
-        }
     }
 
     private fun getData(restaurantId: String) {
@@ -93,6 +70,7 @@ class RestaurantActivity : AppCompatActivity() {
                 val gson = Gson()
                 val restaurantJson = gson.toJson(it.result!!.data)
                 restaurant = gson.fromJson(restaurantJson, Restaurant::class.java)
+                restaurant?.docId = restaurantId
                 binding.apply {
                     tvName.text = restaurant!!.name
                     tvDescription.text = restaurant!!.description
@@ -103,6 +81,20 @@ class RestaurantActivity : AppCompatActivity() {
                     )
                 }
                 adapter.setNewItems(restaurant!!.menu)
+
+                binding.btnProceed.setOnClickListener {
+                    if(adapter.selectedMenuPositions.isNotEmpty()){
+                        val arrayList = arrayListOf<SelectedMenu>()
+                        adapter.selectedMenuPositions.forEach {
+                            arrayList.add(SelectedMenu(restaurant!!.menu[it], 1))
+                        }
+
+                        val intent = Intent(this, OrderSummaryActivity::class.java)
+                        intent.putExtra(OrderSummaryActivity.RESTAURANT_DETAILS, restaurant)
+                        intent.putExtra(OrderSummaryActivity.ORDER_ITEMS, arrayList)
+                        startActivity(intent)
+                    }
+                }
             }
         }
     }

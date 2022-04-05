@@ -43,12 +43,13 @@ class ServiceAdapter(
         fun bind(subscription: Subscription){
             binding.apply {
                 tvTiffinName.text = subscription.restaurantName
-                if(subscription.menus[0].isVeg){
+                var menu = subscription.menus[0].restaurantMenu
+                if(menu.isVeg){
                     tvTiffinVeg.text = "Veg"
                 }else{
                     tvTiffinVeg.text = "Non-Veg"
                 }
-                tvTiffinDelivery.text = subscription.menus[0].days
+                tvTiffinDelivery.text = menu.days
 
 
                 Glide.with(binding.root.context).load(subscription.restaurantImage).centerCrop()

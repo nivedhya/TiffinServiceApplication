@@ -1,6 +1,8 @@
 package ca.tiffinsp.tiffinserviceapplication.models
 
-class RestaurantMenu(var name:String, var image:String, var items:String,var isVeg:Boolean,var days:String, var price:Double) {
+import java.io.Serializable
+
+class RestaurantMenu(var name:String, var image:String, var items:String,var isVeg:Boolean,var days:String, var price:Double):Serializable {
 
 
     fun toMap(): HashMap<String,Any>{

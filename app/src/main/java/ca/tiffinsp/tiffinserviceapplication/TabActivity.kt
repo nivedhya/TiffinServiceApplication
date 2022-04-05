@@ -1,9 +1,11 @@
 package ca.tiffinsp.tiffinserviceapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import ca.tiffinsp.tiffinserviceapplication.search.SearchActivity
 import ca.tiffinsp.tiffinserviceapplication.tabs.home.HomeFragment
 import ca.tiffinsp.tiffinserviceapplication.tabs.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -29,7 +31,8 @@ class TabActivity : AppCompatActivity() {
             true
         }
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
-
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
         }
         bottomNavigationView.selectedItemId = R.id.action_home
     }
