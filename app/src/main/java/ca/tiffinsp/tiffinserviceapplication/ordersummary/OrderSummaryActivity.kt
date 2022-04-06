@@ -62,7 +62,7 @@ class OrderSummaryActivity : AppCompatActivity() {
                     restaurantName = restaurant.name,
                     restaurantImage = restaurant.images[0],
                     specialInstruction = binding.etSpecialInstructions.text.toString(),
-                    menus = adapter.selectedItems,
+                   menus = adapter.selectedItems,
                     uid = Firebase.auth.currentUser!!.uid,
                     createdDate = null
                 )
@@ -79,6 +79,6 @@ class OrderSummaryActivity : AppCompatActivity() {
         adapter.selectedItems.forEach {
             total += it.restaurantMenu.price * it.quantity
         }
-        binding.btnCheckout.text = "$$total Checkout"
+      //  binding.btnCheckout.text = "$$total Checkout"
     }
 }
