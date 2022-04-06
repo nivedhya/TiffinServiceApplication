@@ -128,15 +128,15 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_font_family"
-        android:textFontWeight="400"
-        android:text="Dont have an account?"
+        android:text="Don't have an account?"
         android:textColor="#000000"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintEnd_toStartOf="@id/signUp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textFontWeight="400"
         app:layout_constraintBottom_toBottomOf="@id/button"
+        app:layout_constraintEnd_toStartOf="@id/signUp"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintLeft_toRightOf="@id/signUp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/terms"
         app:layout_constraintVertical_bias="0.546" />
 
@@ -213,10 +213,7 @@
         app:layout_constraintTop_toBottomOf="@id/forgotPassword"
         app:layout_constraintBottom_toTopOf="@id/button"
         android:text="Remember Me"
-        android:layout_marginStart="14dp"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:gravity="center"
+
         />
 
 
