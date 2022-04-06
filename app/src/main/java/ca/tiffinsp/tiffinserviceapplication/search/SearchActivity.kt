@@ -67,7 +67,18 @@ class SearchActivity : AppCompatActivity() {
 
     private fun getData() {
         progressDialog.show()
-        db.collection(FirestoreCollections.RESTAURANTS).get().addOnCompleteListener {
+        db.collection(FirestoreCollections.RESTAURANTS).get().addOnCompleteListener { restaurantSnapShots ->
+            if (restaurantSnapShots.isSuccessful && restaurantSnapShots.result != null) {
+                val gson = Gson()
+                restaurantSnapShots.result!!.forEach { snapshot ->
+                    val restaurantJson = gson.toJson(snapshot.data)
+                    println(restaurantJson)
+                    val restaurant = gson.fromJson(restaurantJson, Restaurant::class.java)
+                    restaurant.docId = snapshot.id
+                    restaurants.add(restaurant)
+                }
+            }
+            progressDialog.hide()
         }
     }
 
