@@ -32,7 +32,7 @@ class SearchAdapter(
         return restaurants.size
     }
 
-
+//logic implementaion
     open class SearchHolder(val binding: ViewholderSearchBinding, callback: RestaurantCallback) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
