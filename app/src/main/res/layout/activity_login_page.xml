@@ -213,7 +213,10 @@
         app:layout_constraintTop_toBottomOf="@id/forgotPassword"
         app:layout_constraintBottom_toTopOf="@id/button"
         android:text="Remember Me"
-
+        android:layout_marginStart="14dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:gravity="center"
         />
 
 
