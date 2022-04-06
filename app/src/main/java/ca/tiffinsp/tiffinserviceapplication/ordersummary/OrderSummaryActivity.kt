@@ -79,6 +79,6 @@ class OrderSummaryActivity : AppCompatActivity() {
         adapter.selectedItems.forEach {
             total += it.restaurantMenu.price * it.quantity
         }
-      //  binding.btnCheckout.text = "$$total Checkout"
+       binding.btnCheckout.text = "$$total Checkout"
     }
 }
