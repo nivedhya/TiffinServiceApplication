@@ -71,7 +71,7 @@ class UserProfile : AppCompatActivity() {
                     "contact" to contact,
                     "email" to email,
                 )
-                db.collection(FirestoreCollections.USERS).document(uid).set(
+                db.collection(FirestoreCollections.USERS).document(uid).update(
                     map
                 ).addOnCompleteListener {
                     if (it.isSuccessful) {

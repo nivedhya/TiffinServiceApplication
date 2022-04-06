@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.*
 import androidx.core.content.edit
+import androidx.core.view.get
 import ca.tiffinsp.tiffinserviceapplication.models.User
 import ca.tiffinsp.tiffinserviceapplication.utils.PreferenceHelper
 import com.google.firebase.auth.FirebaseAuth
@@ -29,13 +30,15 @@ class SignUpPage : AppCompatActivity() {
     var city:String="";
     var province:String="";
     var country:String="";
+    val cities = arrayListOf("Barrie", "Toronto", "Midland", "Mississauga")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_page)
         auth = Firebase.auth
 
 
-        findViewById<ImageButton>(R.id.BackButtonimage).setOnClickListener {
+        findViewById<ImageView>(R.id.BackButtonimage).setOnClickListener {
             finish()
         }
         findViewById<TextView>(R.id.login).setOnClickListener {
@@ -46,6 +49,10 @@ class SignUpPage : AppCompatActivity() {
             finish()
         }
 
+        val adapter: ArrayAdapter<String> = ArrayAdapter(this, android.R.layout.simple_spinner_item, cities)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val citySpinner = findViewById<Spinner>(R.id.city_edittext)
+        citySpinner.adapter = adapter
 
 //toast....
 
@@ -123,7 +130,7 @@ class SignUpPage : AppCompatActivity() {
         password=findViewById<EditText>(R.id.Password_TextPassword).text.toString();
         building=findViewById<EditText>(R.id.building_edittext).text.toString();
         streetname=findViewById<EditText>(R.id.streetname_edittext).text.toString();
-        city=findViewById<EditText>(R.id.city_edittext).text.toString();
+        city= cities[findViewById<Spinner>(R.id.city_edittext).selectedItemPosition]
         province=findViewById<EditText>(R.id.province_edittext).text.toString();
         country=findViewById<EditText>(R.id.country_edittext).text.toString();
 
@@ -182,7 +189,6 @@ class SignUpPage : AppCompatActivity() {
         if(city.isEmpty())
         {
 
-            findViewById<EditText>(R.id.city_edittext).setError("Invalid Input ");
             isValid=false;
         }
         if(province.isEmpty())

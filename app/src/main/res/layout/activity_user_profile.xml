@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img" />
+        app:srcCompat="@drawable/ic_arrow_back" />
 
     <TextView
         android:id="@+id/textView4"
@@ -108,6 +108,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Email"
+        android:enabled="false"
         android:textColor="@color/edit_text_color"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
