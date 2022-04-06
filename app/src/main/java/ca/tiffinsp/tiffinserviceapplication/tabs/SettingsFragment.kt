@@ -8,11 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import ca.tiffinsp.tiffinserviceapplication.LoginPage
-import ca.tiffinsp.tiffinserviceapplication.R
 import ca.tiffinsp.tiffinserviceapplication.UserProfile
-import ca.tiffinsp.tiffinserviceapplication.databinding.FragmentHomeBinding
 import ca.tiffinsp.tiffinserviceapplication.databinding.FragmentSettingsBinding
 import ca.tiffinsp.tiffinserviceapplication.utils.PreferenceHelper
 import com.google.firebase.auth.FirebaseAuth
@@ -47,7 +44,7 @@ class SettingsFragment : Fragment() {
 
             tvLogout.setOnClickListener {
                 FirebaseAuth.getInstance().signOut()
-                PreferenceHelper().deletePref(requireContext())
+                PreferenceHelper().deleteUserPref(requireContext())
                 val intent = Intent(requireContext(), LoginPage::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 activity?.startActivity(intent)
