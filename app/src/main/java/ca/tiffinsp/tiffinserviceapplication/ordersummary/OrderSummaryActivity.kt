@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import ca.tiffinsp.tiffinserviceapplication.databinding.ActivityForgotPasswordBinding
 import ca.tiffinsp.tiffinserviceapplication.databinding.ActivityOrderSummaryBinding
 import ca.tiffinsp.tiffinserviceapplication.models.Restaurant
 import ca.tiffinsp.tiffinserviceapplication.models.SelectedMenu
@@ -71,6 +72,9 @@ class OrderSummaryActivity : AppCompatActivity() {
                 intent.putExtra(PaymentActivity.SUBSCRIPTION_DETAILS, subscription)
                 startActivity(intent)
             }
+        }
+        binding.btnCancel.setOnClickListener {
+            onBackPressed()
         }
     }
 
