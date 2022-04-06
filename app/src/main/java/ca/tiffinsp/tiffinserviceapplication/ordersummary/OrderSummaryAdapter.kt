@@ -34,7 +34,20 @@ class OrderSummaryAdapter(
                 callback.updatePrice()
             }
 
-            tvReduce.setOnClickListener {
+            tvReduce.setOnClickListener {      item.quantity = item.quantity - 1
+                if(item.quantity == 0){
+                    if(selectedItems.size == 1){
+                        callback.close()
+                    }else{
+                        selectedItems.removeAt(position)
+                        notifyItemRemoved(position)
+                        callback.updatePrice()
+                    }
+                }else{
+                    tvQuantity.text = item.quantity.toString()
+                    callback.updatePrice()
+                }
+
           }
         }
     }
