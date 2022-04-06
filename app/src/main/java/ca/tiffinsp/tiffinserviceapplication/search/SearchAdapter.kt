@@ -33,23 +33,7 @@ class SearchAdapter(
     }
 
 
-    open class SearchHolder(val binding: ViewholderSearchBinding, callback: RestaurantCallback) : RecyclerView.ViewHolder(binding.root) {
-        init {
-            binding.root.setOnClickListener {
-                if(adapterPosition != -1){
-                    callback.onRestaurantClick(adapterPosition)
-                }
-            }
-        }
 
-        fun bind(restaurant: Restaurant){
-            binding.apply {
-                tvRestaurant.text = restaurant.name
-                Glide.with(itemView.context).load(restaurant.images[0]).centerCrop()
-                    .into(ivRestaurant)
-                tvRating.text = restaurant.rating.toString()
-            }
-        }
 
     }
 
