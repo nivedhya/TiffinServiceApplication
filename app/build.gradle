@@ -34,7 +34,10 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+
 }
+
 
 dependencies {
 
@@ -59,6 +62,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.code.gson:gson:2.2.+'
 
+    implementation 'com.github.AppIntro:AppIntro:6.2.0'
+
 
 }
+
 
