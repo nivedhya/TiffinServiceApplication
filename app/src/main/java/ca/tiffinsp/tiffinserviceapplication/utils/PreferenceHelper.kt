@@ -8,6 +8,7 @@ class PreferenceHelper {
 
     companion object {
         const val PREF_NAME = "TIFFIN_PREF"
+        const val ON_BOARDING_SHOWN_PREF = "ON_BOARDING_SHOWN_PREF"
         const val USER_PREF = "USER_PREF"
         const val REMEMBER_EMAIL = "REMEMBER_EMAIL"
     }
