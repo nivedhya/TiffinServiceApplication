@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TiffinServiceApplication">
         <activity
+            android:name=".onboardingActivity"
+            android:exported="false" />
+        <activity
             android:name=".payment.PaymentActivity"
             android:exported="false" />
         <activity
@@ -58,6 +61,8 @@
             android:exported="false" />
         <activity
             android:name=".SignUpPage"
+            android:exported="false" />
+        <activity android:name= ".onboardingActivity"
             android:exported="false" />
     </application>
 
