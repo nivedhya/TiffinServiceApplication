@@ -62,8 +62,6 @@
         <activity
             android:name=".SignUpPage"
             android:exported="false" />
-        <activity android:name= ".onboardingActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

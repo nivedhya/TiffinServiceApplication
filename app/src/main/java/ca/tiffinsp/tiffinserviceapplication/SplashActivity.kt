@@ -16,20 +16,24 @@ class SplashActivity : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {}
 
             override fun onFinish() {
-
-                val userJson = PreferenceHelper().getPref(applicationContext).getString(
-                    PreferenceHelper.USER_PREF, null)
-                if(userJson.isNullOrEmpty()){
-                    val intent = Intent(this@SplashActivity, LoginPage::class.java)
-                    startActivity(intent)
-                    finish()
-                }else{
-                    val intent = Intent(this@SplashActivity, TabActivity::class.java)
+                val pref = PreferenceHelper().getPref(applicationContext)
+                val onBoardingShown = pref.getBoolean(PreferenceHelper.ON_BOARDING_SHOWN_PREF, false)
+                if (onBoardingShown) {
+                    val userJson = pref.getString(PreferenceHelper.USER_PREF, null)
+                    if(userJson.isNullOrEmpty()){
+                        val intent = Intent(this@SplashActivity, LoginPage::class.java)
+                        startActivity(intent)
+                        finish()
+                    }else{
+                        val intent = Intent(this@SplashActivity, TabActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                } else {
+                    val intent = Intent(this@SplashActivity, onboardingActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
-
-
             }
         }
         timer.start()
