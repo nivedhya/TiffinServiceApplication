@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TiffinServiceApplication">
         <activity
+            android:name=".SubscriptionDetail"
+            android:exported="false" />
+        <activity
             android:name=".onboardingActivity"
             android:exported="false" />
         <activity
