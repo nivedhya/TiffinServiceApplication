@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/transparent"
     android:clipToPadding="false"
+    android:fillViewport="true"
     android:paddingBottom="@dimen/tab_page_bottom_padding">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -110,10 +111,28 @@
             android:textFontWeight="300"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:visibility="invisible"
             android:includeFontPadding="false"
             android:layout_marginTop="20dp"
             app:layout_constraintEnd_toStartOf="@id/civ_profile"
             app:layout_constraintTop_toBottomOf="@id/dots_indicator"
+            app:layout_constraintStart_toEndOf="@id/gl_start"/>
+
+        <TextView
+            android:id="@+id/tv_no_subscriptions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="No Service Subscribed"
+            android:textFontWeight="300"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:visibility="gone"
+            android:includeFontPadding="false"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toStartOf="@id/gl_end"
+            app:layout_constraintTop_toBottomOf="@id/dots_indicator"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/gl_start"/>
 
 

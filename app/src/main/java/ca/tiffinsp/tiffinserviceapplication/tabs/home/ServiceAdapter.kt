@@ -1,12 +1,14 @@
 package ca.tiffinsp.tiffinserviceapplication.tabs.home
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import ca.tiffinsp.tiffinserviceapplication.R
+import ca.tiffinsp.tiffinserviceapplication.SubscriptionDetail
 import ca.tiffinsp.tiffinserviceapplication.databinding.ViewholderHomePageBinding
 import ca.tiffinsp.tiffinserviceapplication.databinding.ViewholderMenuItemBinding
 import ca.tiffinsp.tiffinserviceapplication.models.Subscription
@@ -26,7 +28,7 @@ class ServiceAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ServiceHolder {
         val binding = ViewholderHomePageBinding.inflate(LayoutInflater.from(context), parent, false)
-        return ServiceHolder(binding)
+        return ServiceHolder(context, binding)
     }
 
     override fun onBindViewHolder(holder: ServiceHolder, position: Int) {
@@ -38,7 +40,7 @@ class ServiceAdapter(
     }
 
 
-    class ServiceHolder(val binding: ViewholderHomePageBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ServiceHolder(private val context: Context, val binding: ViewholderHomePageBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(subscription: Subscription){
             binding.apply {
@@ -54,6 +56,11 @@ class ServiceAdapter(
 
                 Glide.with(binding.root.context).load(subscription.restaurantImage).centerCrop()
                     .into(ivTiffin)
+                this.root.setOnClickListener {
+                    val intent = Intent(context, SubscriptionDetail::class.java)
+                    intent.putExtra(SubscriptionDetail.SUBSCRIPTION_DETAILS, subscription)
+                    context.startActivity(intent)
+                }
             }
 
         }

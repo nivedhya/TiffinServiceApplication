@@ -84,6 +84,13 @@ override fun onCreateView(
                     subscriptions.add(subscription)
                 }
                 adapter.addNewData(subscriptions)
+                if(subscriptions.size == 0){
+                    binding.tvNoSubscriptions.visibility = View.VISIBLE
+                    binding.tvSubscribed.visibility = View.INVISIBLE
+                }else{
+                    binding.tvNoSubscriptions.visibility = View.GONE
+                    binding.tvSubscribed.visibility = View.VISIBLE
+                }
                 db.collection(FirestoreCollections.BANNERS).get().addOnCompleteListener { bannerSnapshot ->
                     if (bannerSnapshot.isSuccessful && bannerSnapshot.result != null) {
                         val images = arrayListOf<String>()
