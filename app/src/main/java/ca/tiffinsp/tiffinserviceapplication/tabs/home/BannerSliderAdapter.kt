@@ -2,6 +2,7 @@ package ca.tiffinsp.tiffinserviceapplication.tabs.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import ca.tiffinsp.tiffinserviceapplication.R
 import com.bumptech.glide.Glide
+import com.stfalcon.imageviewer.StfalconImageViewer
 
 
 class BannerSliderAdapter(
@@ -36,6 +38,12 @@ class BannerSliderAdapter(
         Glide.with(context).load(images[position]).centerCrop()
 //            .placeholder(R.drawable.loading_spinner)
             .into(holder.imageView);
+        holder.imageView.setOnClickListener {
+            StfalconImageViewer.Builder<String>(context, images) { view, image ->
+                Glide.with(context).load(image).into(view)
+            }   .withStartPosition(position)
+                .show()
+        }
     }
 
     override fun getItemCount(): Int {

@@ -1,3 +1,5 @@
 package ca.tiffinsp.tiffinserviceapplication.models
 
-data class FirebaseDate(val seconds:Int)
+import java.io.Serializable
+
+data class FirebaseDate(val seconds:Int):Serializable

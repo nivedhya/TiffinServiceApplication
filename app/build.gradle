@@ -65,7 +65,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.2.+'
 
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
-
+    implementation 'com.github.stfalcon-studio:StfalconImageViewer:v1.0.1'
 
 }
 
