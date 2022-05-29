@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ca.tiffinsp.tiffinserviceapplication.LoginPage
+import ca.tiffinsp.tiffinserviceapplication.SubscriptionDetail
 import ca.tiffinsp.tiffinserviceapplication.UserProfile
 import ca.tiffinsp.tiffinserviceapplication.databinding.FragmentSettingsBinding
 import ca.tiffinsp.tiffinserviceapplication.utils.PreferenceHelper
@@ -34,6 +35,14 @@ class SettingsFragment : Fragment() {
                 val intent = Intent(requireContext(), UserProfile::class.java)
                 activity?.startActivity(intent)
             }
+
+
+            subscriptionDetail.setOnClickListener {
+                val intent = Intent(requireContext(), SubscriptionDetail::class.java)
+                activity?.startActivity(intent)
+            }
+
+
             tvPrivacy.setOnClickListener {
                 openWebPage("https://www.google.com")
             }

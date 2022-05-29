@@ -1,11 +1,9 @@
 package ca.tiffinsp.tiffinserviceapplication.ordersummary
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import ca.tiffinsp.tiffinserviceapplication.databinding.ActivityForgotPasswordBinding
 import ca.tiffinsp.tiffinserviceapplication.databinding.ActivityOrderSummaryBinding
 import ca.tiffinsp.tiffinserviceapplication.models.Restaurant
 import ca.tiffinsp.tiffinserviceapplication.models.SelectedMenu
@@ -14,6 +12,7 @@ import ca.tiffinsp.tiffinserviceapplication.payment.PaymentActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.util.*
 
 class OrderSummaryActivity : AppCompatActivity() {
     lateinit var binding: ActivityOrderSummaryBinding
@@ -57,15 +56,18 @@ class OrderSummaryActivity : AppCompatActivity() {
         updatePrice()
 
         binding.btnCheckout.setOnClickListener {
+            val renewalDate = Calendar.getInstance()
+            renewalDate.add(Calendar.DATE, 30)
             if(restaurant?.docId != null){
                 val subscription = Subscription(
                     restaurantId = restaurant.docId!!,
                     restaurantName = restaurant.name,
                     restaurantImage = restaurant.images[0],
                     specialInstruction = binding.etSpecialInstructions.text.toString(),
-                   menus = adapter.selectedItems,
+                    menus = adapter.selectedItems,
                     uid = Firebase.auth.currentUser!!.uid,
-                    createdDate = null
+                    renewalDate = renewalDate.timeInMillis,
+                    createdDate = Calendar.getInstance().timeInMillis
                 )
 
                 val intent = Intent(this, PaymentActivity::class.java)

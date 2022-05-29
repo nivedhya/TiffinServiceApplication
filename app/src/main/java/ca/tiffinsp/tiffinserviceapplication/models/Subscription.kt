@@ -7,7 +7,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-class Subscription(var restaurantId: String, var restaurantName:String, var restaurantImage:String,  var menus: ArrayList<SelectedMenu>,var specialInstruction:String, var uid: String, var createdDate:FirebaseDate?, var active:Boolean = true):Serializable {
+class Subscription(var restaurantId: String, var restaurantName:String, var restaurantImage:String,  var menus: ArrayList<SelectedMenu>,var specialInstruction:String, var uid: String, var createdDate:Long, var renewalDate:Long, var active:Boolean = true):Serializable {
 
 
     fun toMap(): HashMap<String,Any>{
@@ -19,7 +19,8 @@ class Subscription(var restaurantId: String, var restaurantName:String, var rest
             "active" to active,
             "menus" to menus.map { menu -> menu.toMap() },
             "uid" to uid,
-            "createdDate" to FieldValue.serverTimestamp()
+            "renewalDate" to renewalDate,
+            "createdDate" to createdDate
         )
     }
 

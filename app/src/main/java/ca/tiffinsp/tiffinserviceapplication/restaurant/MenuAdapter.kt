@@ -8,6 +8,7 @@ import ca.tiffinsp.tiffinserviceapplication.R
 import ca.tiffinsp.tiffinserviceapplication.databinding.ViewholderMenuItemBinding
 import ca.tiffinsp.tiffinserviceapplication.models.RestaurantMenu
 import com.bumptech.glide.Glide
+import com.stfalcon.imageviewer.StfalconImageViewer
 
 class MenuAdapter(
     var context: Context,
@@ -61,6 +62,11 @@ class MenuAdapter(
             binding.apply {
                 Glide.with(itemView.context).load(menu.image).centerCrop()
                     .into(ivTiffin)
+                ivTiffin.setOnClickListener {
+                    StfalconImageViewer.Builder<String>(itemView.context, arrayListOf(menu.image)) { view, image ->
+                        Glide.with(itemView.context).load(image).into(view)
+                    }.show()
+                }
                 tvPackageName.text = menu.name
                 tvTiffinItems.text = menu.items
                 tvDays.text = menu.days
