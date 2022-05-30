@@ -40,5 +40,9 @@ class ForgotPasswordActivity : AppCompatActivity() {
             }
 
         }
+
+        findViewById<Button>(R.id.button2).setOnClickListener {
+            onBackPressed()
+        }
     }
 }
