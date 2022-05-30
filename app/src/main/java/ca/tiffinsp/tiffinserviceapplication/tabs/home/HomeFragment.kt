@@ -81,6 +81,7 @@ override fun onCreateView(
                 subscriptionSnapShots.result!!.forEach { snapshot ->
                     val restaurantJson = gson.toJson(snapshot.data)
                     val subscription = gson.fromJson(restaurantJson, Subscription::class.java)
+                    subscription.docId = snapshot.id
                     subscriptions.add(subscription)
                 }
                 adapter.addNewData(subscriptions)
