@@ -7,7 +7,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
-class Subscription(var restaurantId: String, var restaurantName:String, var restaurantImage:String,  var menus: ArrayList<SelectedMenu>,var specialInstruction:String, var uid: String, var createdDate:Long, var renewalDate:Long, var active:Boolean = true):Serializable {
+class Subscription(var docId:String? = null, var restaurantId: String, var restaurantName:String, var restaurantImage:String,  var menus: ArrayList<SelectedMenu>,var specialInstruction:String, var uid: String, var createdDate:Long, var renewalDate:Long, var active:Boolean = true):Serializable {
 
 
     fun toMap(): HashMap<String,Any>{

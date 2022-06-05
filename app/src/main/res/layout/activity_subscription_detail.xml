@@ -22,8 +22,10 @@
         android:background="@color/transparent"
         android:clipToPadding="false"
         android:fillViewport="true"
+        android:id="@+id/nsv"
         app:layout_constraintTop_toBottomOf="@id/back_button"
-        android:paddingBottom="30dp">
+        app:layout_constraintBottom_toTopOf="@id/button_cancel"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -122,11 +124,28 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/DaysDetail"
                 tools:listitem="@layout/viewholder_subscribed_items" />
-
-
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/button_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:backgroundTint="#4CAF50"
+        android:fontFamily="@font/poppins_font_family"
+        android:textFontWeight="400"
+        android:text="Cancel Subscription"
+        app:boxCornerRadiusBottomEnd="16dp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxCornerRadiusTopStart="16dp"
+        app:iconTint="#4CAF50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

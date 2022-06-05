@@ -37,12 +37,6 @@ class SettingsFragment : Fragment() {
             }
 
 
-            subscriptionDetail.setOnClickListener {
-                val intent = Intent(requireContext(), SubscriptionDetail::class.java)
-                activity?.startActivity(intent)
-            }
-
-
             tvPrivacy.setOnClickListener {
                 openWebPage("https://www.google.com")
             }

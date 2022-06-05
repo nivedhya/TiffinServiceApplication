@@ -1,15 +1,19 @@
 package ca.tiffinsp.tiffinserviceapplication
 
 
+import android.content.DialogInterface.OnShowListener
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import ca.tiffinsp.tiffinserviceapplication.databinding.ActivitySubscriptionDetailBinding
 import ca.tiffinsp.tiffinserviceapplication.models.Subscription
 import ca.tiffinsp.tiffinserviceapplication.subscription.SubscriptionMenuAdapter
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -18,6 +22,7 @@ class SubscriptionDetail : AppCompatActivity() {
     private lateinit var binding: ActivitySubscriptionDetailBinding
     private var subscription: Subscription? = null
     lateinit var adapter: SubscriptionMenuAdapter
+    private val db = Firebase.firestore
 
     companion object {
         const val SUBSCRIPTION_DETAILS = "SUBSCRIPTION_DETAILS"
@@ -50,7 +55,31 @@ class SubscriptionDetail : AppCompatActivity() {
         }
         val dateFormat = SimpleDateFormat("yyyy-MM-dd")
         binding.DaysDetail.text = "Renewal date : ${dateFormat.format(Date(subscription!!.renewalDate))}"
+        binding.buttonCancel.setOnClickListener {
+            showCancelDialog();
+        }
+    }
 
+    private fun showCancelDialog(){
+        val alertDialog = AlertDialog.Builder(this)
+            .setTitle("Cancel Subscription")
+            .setMessage("Are you sure you want to cancel this subscription?")
+            .setPositiveButton(
+                "Yes"
+            ) { dialog, _ ->
+                db.collection(FirestoreCollections.SUBSCRIPTIONS).document(subscription!!.docId!!)
+                    .update(hashMapOf<String, Any>("active" to false))
+                dialog.cancel()
+                onBackPressed()
+                Toast.makeText(baseContext, "Subscription cancelled", Toast.LENGTH_SHORT).show()
+            }
+            .setNegativeButton("No", null).create()
+
+        alertDialog.setOnShowListener(OnShowListener {
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(this, R.color.black))
+            alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(this, R.color.black))
+        })
+        alertDialog.show()
     }
 
     override fun onStart() {
