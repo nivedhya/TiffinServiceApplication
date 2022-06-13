@@ -76,4 +76,22 @@
         app:layout_constraintStart_toStartOf="parent"
         />
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fl_loading"
+        android:background="#34000000"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="gone"
+        >
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            style="@style/Widget.AppCompat.ProgressBar"/>
+
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package ca.tiffinsp.tiffinserviceapplication.payment
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import ca.tiffinsp.tiffinserviceapplication.LoginPage
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.Volley
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.gson.Gson
 import com.stripe.android.ApiResultCallback
 import com.stripe.android.PaymentConfiguration
@@ -82,6 +84,7 @@ class PaymentActivity : AppCompatActivity() {
                 .show()
             return
         }
+        binding.flLoading.visibility = View.VISIBLE
         stripe = Stripe(
             applicationContext,
             PaymentConfiguration.getInstance(applicationContext).publishableKey
@@ -90,10 +93,13 @@ class PaymentActivity : AppCompatActivity() {
             override fun onSuccess(result: PaymentMethod) {
                 if (result.id != null) {
                     sendPaymentDetails(result.id!!)
+                }else{
+                    binding.flLoading.visibility = View.GONE
                 }
             }
 
             override fun onError(e: Exception) {
+                binding.flLoading.visibility = View.GONE
                 Toast.makeText(applicationContext, "Payment Failed", Toast.LENGTH_SHORT).show()
             }
 
@@ -102,6 +108,17 @@ class PaymentActivity : AppCompatActivity() {
 
 
     private fun sendPaymentDetails(paymentMethod: String) {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {task->
+            var token:String? = null
+            if (task.isSuccessful) {
+                token = task.result
+            }
+            sendApiRequest(paymentMethod, token)
+        }
+
+    }
+
+    private fun sendApiRequest(paymentMethod: String, token:String?){
         val userJson = PreferenceHelper().getPref(applicationContext)
             .getString(PreferenceHelper.USER_PREF, "{}");
         val user = Gson().fromJson(userJson, User::class.java)
@@ -112,6 +129,10 @@ class PaymentActivity : AppCompatActivity() {
         params["paymentMethod"] = paymentMethod
         params["email"] = user.email
         params["name"] = user.name
+        params["restaurantName"] = subscription!!.restaurantName
+        if(token != null){
+            params["token"] = token
+        }
 
         val stringRequest = JsonObjectRequest(
             Request.Method.POST,
@@ -120,6 +141,7 @@ class PaymentActivity : AppCompatActivity() {
                 params as Map<*, *>?
             ),
             { responseJson ->
+                binding.flLoading.visibility = View.GONE
                 val success = responseJson.optBoolean("success", false)
                 println(responseJson)
                 if (success) {
@@ -141,6 +163,7 @@ class PaymentActivity : AppCompatActivity() {
 
             },
             {
+                binding.flLoading.visibility = View.GONE
                 Toast.makeText(
                     this,
                     "Payment failed. Please try again after some time",
