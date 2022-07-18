@@ -34,6 +34,7 @@ import com.stripe.android.Stripe
 import com.stripe.android.model.PaymentMethod
 import com.stripe.android.paymentsheet.PaymentSheet
 import com.stripe.android.view.CardInputWidget
+import com.stripe.android.view.CardMultilineWidget
 import org.json.JSONObject
 import java.util.HashMap
 
@@ -77,7 +78,7 @@ class PaymentActivity : AppCompatActivity() {
     private fun pay() {
         println("Pay invoked")
         val cardInputWidget =
-            findViewById<CardInputWidget>(R.id.cardInputWidget)
+            findViewById<CardMultilineWidget>(R.id.cardInputWidget)
         val params = cardInputWidget.paymentMethodCreateParams
         if (params == null) {
             Toast.makeText(applicationContext, "Please input the details", Toast.LENGTH_SHORT)
